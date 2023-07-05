@@ -88,7 +88,7 @@ const Header = () => {
 						{navigations.map((item) => (
 							<li key={item.name}>
 								<Link
-									className='text-lg text-veryDarkBlue font-bold '
+									className='text-lg text-veryDarkBlue font-bold'
 									href={item.href}>
 									{item.name}
 								</Link>
