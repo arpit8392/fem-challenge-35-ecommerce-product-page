@@ -43,16 +43,16 @@ export default function Home() {
 					/>
 					<button
 						onClick={previous}
-						className='absolute h-8 w-8 flex items-center justify-center rounded-full bg-white z-10 left-4 top-32 md:hidden'>
+						className='group absolute h-8 w-8 flex items-center justify-center rounded-full bg-white z-10 left-4 top-32 md:hidden'>
 						{' '}
-						<ChevronLeftIcon className='h-4 w-4 text-veryDarkBlue' />
+						<ChevronLeftIcon className='h-4 w-4 text-veryDarkBlue group-hover:text-orange' />
 						<span className='sr-only'>Previous Button</span>
 					</button>
 					<button
 						onClick={next}
-						className='absolute h-8 w-8 flex items-center justify-center rounded-full bg-white z-10 right-4 top-32 md:hidden'>
+						className='group absolute h-8 w-8 flex items-center justify-center rounded-full bg-white z-10 right-4 top-32 md:hidden'>
 						{' '}
-						<ChevronRightIcon className='h-4 w-4 text-veryDarkBlue' />
+						<ChevronRightIcon className='h-4 w-4 text-veryDarkBlue group-hover:text-orange' />
 						<span className='sr-only'>Previous Button</span>
 					</button>
 				</div>
@@ -62,9 +62,8 @@ export default function Home() {
 							<button
 								onClick={() => goToSlide(index)}
 								className={clsx(
-									'rounded-2xl overflow-hidden hover:bg-white hover:opacity-50',
-									index === currentIndex &&
-										'border-2 border-orange bg-white opacity-50'
+									'rounded-2xl overflow-hidden border-2 hover:bg-white hover:opacity-50',
+									index === currentIndex && ' border-orange bg-white opacity-50'
 								)}>
 								<Image
 									src={`/images/${item.thumbnail}`}

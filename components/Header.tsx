@@ -44,7 +44,7 @@ const Header = () => {
 				</div>
 				<div className='flex items-center gap-5 md:gap-12'>
 					<button>
-						<ShoppingCartIcon className='h-6 w-6 text-darkGrayishBlue' />
+						<ShoppingCartIcon className='h-6 w-6 text-darkGrayishBlue hover:text-veryDarkBlue' />
 						<span className='sr-only'>Open Shopping Cart</span>
 					</button>
 					<Link href={'#'}>
@@ -53,14 +53,14 @@ const Header = () => {
 							alt='Avatar'
 							width={24}
 							height={24}
-							className='rounded-full w-auto object-contain md:hidden'
+							className='rounded-full w-auto object-contain md:hidden border-2 hover:border-orange'
 						/>
 						<Image
 							src={'/images/image-avatar.png'}
 							alt='Avatar'
 							width={50}
 							height={50}
-							className='hidden rounded-full w-auto object-contain md:block'
+							className='hidden rounded-full w-auto object-contain md:block border-2 hover:border-orange'
 						/>
 					</Link>
 				</div>
