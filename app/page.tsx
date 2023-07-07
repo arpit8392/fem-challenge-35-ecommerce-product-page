@@ -1,6 +1,7 @@
 'use client'
 
 import { product } from '@/data'
+import { getDiscountedPrice } from '@/lib/helper'
 import {
 	ShoppingCartIcon,
 	PlusSmallIcon,
@@ -14,6 +15,7 @@ import { useState } from 'react'
 
 export default function Home() {
 	const [currentIndex, setCurrentIndex] = useState(0)
+	const [quantity, setQuantity] = useState(0)
 
 	const previous = () => {
 		const isFirstSlide = currentIndex === 0
@@ -29,6 +31,14 @@ export default function Home() {
 
 	const goToSlide = (slideIndex: number) => {
 		setCurrentIndex(slideIndex)
+	}
+
+	const increase = () => {
+		setQuantity((prev) => prev + 1)
+	}
+
+	const decrease = () => {
+		setQuantity((prev) => prev && prev - 1)
 	}
 
 	return (
@@ -92,9 +102,9 @@ export default function Home() {
 				</div>
 				<div className='flex items-center justify-between md:flex-col md:items-start md:gap-3'>
 					<div className='flex items-center gap-6 md:gap-4'>
-						<h2 className='text-veryDarkBlue font-bold text-3xl'>{`$${(
-							(product.price * product.offer) /
-							100
+						<h2 className='text-veryDarkBlue font-bold text-3xl'>{`$${getDiscountedPrice(
+							product.price,
+							product.offer
 						).toFixed(2)}`}</h2>
 						<span className='bg-paleOrange rounded-lg p-2 text-orange font-bold'>
 							{`${product.offer}%`}
@@ -106,12 +116,16 @@ export default function Home() {
 				</div>
 				<div className='flex flex-col gap-4 md:flex-row'>
 					<div className='flex justify-between items-center bg-[#F6F8FD] px-6 py-5 rounded-xl font-bold md:w-1/3'>
-						<button>
+						<button
+							onClick={decrease}
+							className={clsx(
+								!quantity ? 'cursor-not-allowed' : 'cursor-pointer'
+							)}>
 							<MinusSmallIcon className='h-6 w-6 text-orange' />
 							<span className='sr-only'>Decrease Quantity</span>
 						</button>
-						<span className='text-veryDarkBlue'>0</span>
-						<button>
+						<span className='text-veryDarkBlue'>{quantity}</span>
+						<button onClick={increase}>
 							<PlusSmallIcon className='h-6 w-6 text-orange' />
 							<span className='sr-only'>Increase Quantity</span>
 						</button>
